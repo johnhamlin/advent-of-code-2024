@@ -3,6 +3,7 @@ package day02
 import (
 	"bufio"
 	"fmt"
+	"github.com/johnhamlin/advent-of-code-2024/tree/main/utils"
 	"log"
 	"os"
 	"strconv"
@@ -10,7 +11,7 @@ import (
 )
 
 func PartOne() (safeCount int) {
-	file, err := os.Open("./day02/input.txt")
+	file, err := os.Open(utils.GetInputPath())
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -3,6 +3,7 @@ package day01
 import (
 	"bufio"
 	"fmt"
+	"github.com/johnhamlin/advent-of-code-2024/tree/main/utils"
 	"log"
 	"math"
 	"os"
@@ -14,7 +15,7 @@ import (
 func PartOne() {
 	var left, right [1000]int
 
-	file, err := os.Open("day01/input.txt")
+	file, err := os.Open(utils.GetInputPath())
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -51,7 +52,7 @@ func PartTwo() {
 
 	rightFreq := make(map[int]int)
 
-	file, err := os.Open("day01/input.txt")
+	file, err := os.Open(utils.GetInputPath())
 	if err != nil {
 		log.Fatal(err)
 	}
