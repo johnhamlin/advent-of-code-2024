@@ -1,4 +1,4 @@
-package main
+package day01
 
 import (
 	"bufio"
@@ -11,15 +11,10 @@ import (
 	"strings"
 )
 
-func main() {
-	partOne()
-	partTwo()
-}
-
-func partOne() {
+func PartOne() {
 	var left, right [1000]int
 
-	file, err := os.Open("input.txt")
+	file, err := os.Open("day01/input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -51,12 +46,12 @@ func partOne() {
 
 }
 
-func partTwo() {
+func PartTwo() {
 	var left [1000]int
 
 	rightFreq := make(map[int]int)
 
-	file, err := os.Open("input.txt")
+	file, err := os.Open("day01/input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
