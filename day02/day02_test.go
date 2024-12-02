@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func Test_PartOne(t *testing.T) {
+func TestPartOne(t *testing.T) {
 	got := PartOne()
 	want := 407
 

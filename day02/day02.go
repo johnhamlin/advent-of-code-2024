@@ -16,9 +16,9 @@ func PartOne() (safeCount int) {
 		log.Fatal(err)
 	}
 	defer file.Close()
+
 	//	Loop
 	scanner := bufio.NewScanner(file)
-
 LineLoop:
 	for scanner.Scan() {
 		//	Parse the data into fields
@@ -38,29 +38,18 @@ LineLoop:
 			nums[i] = num
 		}
 
-		// descending
-		if nums[0] > nums[len(nums)-1] {
-			for i := 1; i < len(nums); i++ {
-				diff := nums[i-1] - nums[i]
-				if diff <= 0 || diff > 3 {
-					//	need to break outer loops too
-					continue LineLoop
-				}
-			}
-			//	ascending
-		} else {
-			for i := 1; i < len(nums); i++ {
-				diff := nums[i] - nums[i-1]
-				if diff <= 0 || diff > 3 {
-					//	need to break outer loops too
-					continue LineLoop
-				}
+		differ := getDiffer(nums[0], nums[len(nums)-1])
+
+		for i := 1; i < len(nums); i++ {
+			diff := differ(nums[i-1], nums[i])
+			if diff <= 0 || diff > 3 {
+				continue LineLoop
 			}
 		}
 		safeCount++
 	}
 
-	return
+	return safeCount
 
 }
 
@@ -119,6 +108,17 @@ LineLoop:
 
 }
 
-//func getDiffer(first, last int) func(x, y int) int {
-//
-//}
+// Returns a callback function that returns the distance between two numbers based on whether
+// the series is descending or ascending.
+func getDiffer(first, last int) func(i, j int) int {
+	// Descending list
+	if first > last {
+		return func(i, j int) int {
+			return i - j
+		}
+	}
+	// Ascending list
+	return func(i, j int) int {
+		return j - i
+	}
+}
