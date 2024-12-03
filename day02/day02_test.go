@@ -13,3 +13,9 @@ func TestPartOne(t *testing.T) {
 		fmt.Println("got", got, "want", want)
 	}
 }
+
+func BenchmarkPartTwo(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		PartTwo()
+	}
+}
